@@ -26,20 +26,17 @@ class CanvasHelper {
   }
 
   handleTouchStart(event) {
-    console.log('>>> HIT')
     event.preventDefault();
     this.initStoke(event.touches[0]);
   }
 
   handleTouchMove(event) {
-    console.log('>>> HIT MOVE')
     event.preventDefault();
     this.paint(event.touches[0]);
   }
 
   initStoke(event) {
     const { x, y } = this.calculateXY(event);
-    console.log('>> EVENT : ', event);
     this.ctx.moveTo(x, y);
     this.ctx.beginPath();
     this.paint(event);
