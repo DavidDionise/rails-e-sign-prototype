@@ -1,3 +1,1 @@
-Couldn't get downloading to work for some reason.. 
-
-For now, when you hit export, a file named 'pdfs/signature.pdf' will be generated with the image
+Rails e-sign prototype

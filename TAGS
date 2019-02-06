@@ -2,12 +2,24 @@
 app/controllers/application_controller.rb,79
 class ApplicationController < ActionController::BaseApplicationController1,0
 
+app/controllers/esign_controller.rb,153
+class EsignController < ApplicationControllerEsignController1,0
+  def indexindex2,0
+  def generate_pdfgenerate_pdf5,0
+  def send_pdfsend_pdf23,0
+
+app/helpers/esign_helper.rb,35
+module EsignHelperEsignHelper1,0
+
 app/helpers/application_helper.rb,47
 module ApplicationHelperApplicationHelper1,0
 
 test/test_helper.rb,101
 class ActiveSupport::TestCaseTestCase5,0
 class ActiveSupport::TestCaseActiveSupport::TestCase5,0
+
+test/controllers/esign_controller_test.rb,79
+class EsignControllerTest < ActionController::TestCaseEsignControllerTest3,0
 
 config/application.rb,158
 module ESignTestESignTest9,0

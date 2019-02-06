@@ -54,5 +54,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root 'esign#index'
-  post 'esign/generate_pdf', { controller: 'esign', action: 'generate_pdf' }
+  post 'esign/generate_pdf', { defaults: { format: :pdf } }
+  get 'esign/send_pdf/:file_name', to: 'esign#send_pdf', as: 'send_pdf'
 end

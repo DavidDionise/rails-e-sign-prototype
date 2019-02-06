@@ -13,20 +13,38 @@ class CanvasHelper {
 
     this.initStoke = this.initStoke.bind(this);
     this.paint = this.paint.bind(this);
+    this.handleTouchStart = this.handleTouchStart.bind(this);
+    this.handleTouchMove = this.handleTouchMove.bind(this);
     this.endStroke = this.endStroke.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.getDataURL = this.getDataURL.bind(this);
     
     this.canvas.addEventListener('mousedown', this.initStoke);
+    this.canvas.addEventListener('touchstart', this.handleTouchStart);
     document.addEventListener('mouseup', this.endStroke);
+    document.addEventListener('touchend', this.endStroke);
+  }
+
+  handleTouchStart(event) {
+    console.log('>>> HIT')
+    event.preventDefault();
+    this.initStoke(event.touches[0]);
+  }
+
+  handleTouchMove(event) {
+    console.log('>>> HIT MOVE')
+    event.preventDefault();
+    this.paint(event.touches[0]);
   }
 
   initStoke(event) {
     const { x, y } = this.calculateXY(event);
+    console.log('>> EVENT : ', event);
     this.ctx.moveTo(x, y);
     this.ctx.beginPath();
     this.paint(event);
     this.canvas.addEventListener('mousemove', this.paint);
+    this.canvas.addEventListener('touchmove', this.handleTouchMove);
   }
  
   paint(event) {
@@ -38,6 +56,7 @@ class CanvasHelper {
   endStroke() {
     this.ctx.closePath();
     this.canvas.removeEventListener('mousemove', this.paint);
+    this.canvas.removeEventListener('touchmove', this.paint);
   }
 
   calculateXY(event) {
